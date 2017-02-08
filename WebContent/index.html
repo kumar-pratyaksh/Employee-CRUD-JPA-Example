@@ -1,0 +1,201 @@
+<!DOCTYPE html5>
+<html>
+<head>
+	<title>
+		API Test
+	</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+	<h1>API Demo</h1>
+	<ul class="nav nav-tabs nav-justified">
+  <li class="active"><a data-toggle="tab" href="#list">List</a></li>
+  <li><a data-toggle="tab" href="#insert">Insert</a></li>
+  <li><a data-toggle="tab" href="#update">Update</a></li>
+  <li><a data-toggle="tab" href="#delete">Delete</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="list" class="tab-pane fade in active">
+    <h3>List Employees</h3>
+    <div class="row">
+    	<div class="col-sm-7">
+    		
+   			<table class="table" id="employee_table">
+
+   			</table>
+    	</div>
+    	<div class="col-sm-5">
+    		<div class="center-block">
+    			<div class="input-group col-sm-10">
+                    <input type="text" class="search-query form-control" placeholder="Search by id" id="employee_id"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" id="search_by_id">
+                            <span class=" glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+    		</div>
+    		<br/>
+    		<div class="center-block">
+    			<div class="input-group col-sm-10">
+                    <input type="text" class="search-query form-control" placeholder="Search by name" id="employee_name"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" id="search_by_name">
+                            <span class=" glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+    		</div>
+    		<br/>
+    		<span id="employee_info">
+
+    		</span>
+    	</div>
+    </div>
+  </div>
+  <div id="insert" class="tab-pane fade">
+    <h3>Insert Employee</h3>
+    <div class="col-sm-7">
+    	<form class="form-horizontal" id="insert_form">
+    		<div class="form-group">
+    			<label class="control-label col-sm-2">Name:</label>
+    			<div class="col-sm-10">
+    				<input type="text" name="name" class="form-control" id="name" required="true"/>
+    			</div>
+    		</div>
+    		<div class="form-group">
+    			<label class="control-label col-sm-2">Email:</label>
+    			<div class="col-sm-10">
+    				<input type="email" name="email" class="form-control" id="email" required="true" />
+    			</div>
+    		</div>
+    		<div class="form-group">
+    			<label class="control-label col-sm-2">Department:</label>
+    			<div class="col-sm-10">
+    			<select class="form-control" id="department" >
+    				<option value="1">Production</option>
+    				<option value="2">Testing</option>
+    				<option value="3">Backend</option>
+    				<option value="4">Frontend</option>
+    			</select>
+    			</div>
+    		</div>
+    		<button type="Submit" class="btn btn-md btn-success center-block" id="insert_button">Submit</button>
+
+    	</form>
+    </div>
+    <div class="col-sm-5">
+    	<div id="message_insert">
+    		
+    	</div>
+    </div>
+  </div>
+  <div id="update" class="tab-pane fade">
+    <h3>Update Employee</h3>
+    <div class="col-sm-5">
+    	<div class="input-group">
+    	<input type="text" class="search-query form-control" placeholder="Search by id" id="employee_update_id"/>
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" id="update_by_id">
+                <span class=" glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+        </div>
+        <br/>
+        <div class="input-group">
+    	<input type="text" class="search-query form-control" placeholder="Search by name" id="employee_update_name"/>
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" id="update_by_name">
+                <span class=" glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+        </div>
+        <hr/>
+        <form class="form-horizontal" id="update_form">
+        	<div class="form-group">
+        		<input type="text" name="id" id="update_id" style="display: none;">
+        		<label class="control-label col-sm-2">Name:</label>
+        		<div class="col-sm-10">
+        			<input type="text" name="name" class="form-control" id="update_name" required="true"/>
+        		</div>
+        	</div>
+        	<div class="form-group">
+        		<label class="control-label col-sm-2">Email:</label>
+        		<div class="col-sm-10">
+        			<input type="email" name="email" class="form-control" id="update_email" required="true" />
+        		</div>
+        	</div>
+        	<div class="form-group">
+        		<label class="control-label col-sm-2">Department:</label>
+        		<div class="col-sm-10">
+        		<select class="form-control" id="update_department" >
+        			<option value="1">Production</option>
+        			<option value="2">Testing</option>
+        			<option value="3">Backend</option>
+        			<option value="4">Frontend</option>
+        		</select>
+        		</div>
+        	</div>
+        	<button type="Submit" class="btn btn-md btn-success center-block" id="update">Submit</button>
+
+        </form>
+        <div id="message_update">
+        	
+        </div>
+    </div>
+    <div class="col-sm-7">
+    	<table class="table table-hover" id="update_by_name_table">
+    		
+    	</table>
+    	<table class="table table-hover clickable" id="update_table">
+  			
+  		</table>
+    </div>
+
+  </div>
+  <div id="delete" class="tab-pane fade">
+  	<h3>Delete Employee</h3>
+  	<div class="col-sm-5">
+  		<div class="input-group">
+    	<input type="text" class="search-query form-control" placeholder="Search by id" id="employee_delete_id"/>
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" id="delete_by_id">
+                <span class=" glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+        </div>
+        <br/>
+        <div class="input-group">
+    	<input type="text" class="search-query form-control" placeholder="Search by name" id="employee_delete_name"/>
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" id="delete_by_name">
+                <span class=" glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+        </div>
+        <hr/>
+        <span id="delete_employee_info">
+        	
+        </span>
+        <button type="button" class="btn btn-md btn-primary center-block" id="button_delete">Delete Employee</button>
+        <br/>
+        <div id="message_delete"></div>
+  	</div>
+  	<div class="col-sm-7">
+  		<table class="table table-hover" id="delete_by_name_table">
+  			
+  		</table>
+  		<table class="table table-hover clickable" id="delete_table">
+  			
+  		</table>
+  	</div>
+  </div>
+</div>
+</div>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
